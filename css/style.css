@@ -1,0 +1,946 @@
+/* style.css */
+
+/* 1. Reset و متغیرهای رنگ */
+:root {
+  --bg: #f3f6f9;
+  --card-bg: #ffffff;
+  --primary: #0e5a6d;
+  --primary-dark: #084452;
+  --primary-light: #e6f2f5;
+  --accent: #e9a23b;
+  --text: #1e2a32;
+  --muted: #5c6b76;
+  --border: #dce3ea;
+  --error: #c0392b;
+  --error-bg: #fdecea;
+  --error-border: #f5c6cb;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.04);
+  --radius: 8px;
+  --transition: 0.2s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. تنظیمات پایه */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Vazirmatn", "Iranian Sans", Tahoma, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+img,
+svg {
+  display: block;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* Utility */
+.is-hidden {
+  /* display: none ; */
+  
+  max-height: 0  !important;
+  margin: 0  !important;
+  padding-top: 0  !important;
+  padding-bottom: 0  !important;
+  overflow: hidden  !important;
+/* 
+  opacity: 0  !important;
+  max-height: 0  !important;
+  margin: 0  !important;
+  padding-top: 0  !important;
+  padding-bottom: 0  !important;
+  overflow: hidden  !important;
+  /* نمیذاره محتوا بیرون بزنه وقتی صفره */
+  /* transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;  */
+}
+
+.is-hidden2{
+  
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  /* نمیذاره محتوا بیرون بزنه وقتی صفره */
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-show {
+  opacity: 1;
+  max-height: 100px;
+  /* یه مقدار بیشتر از ارتفاع واقعی ارور */
+  margin: 10px 0;
+  /* مارجین دلخواهت موقع نمایش */
+  padding: 12px;
+  /* پدینگ دلخواه باکست */
+  transition: all 0.67s ;
+}
+
+.close-btn{
+
+  cursor: pointer;
+
+border: 1px solid #830b0b59;
+
+border-radius: 6px;
+
+height: 30px;
+
+text-align: center;
+
+width: 30px;
+
+background: linear-gradient(45deg, #ffa8a852, #d99690);
+
+box-shadow: 0px 1px 3px #5a515169, inset 0px -2px 6px #ffffff30, inset 1px -1px 2px #00000042;
+
+color: #1c7f9975;
+
+font-size: 45px !important;
+
+padding-top: 5px;
+
+font-family: vazir;
+
+font-weight: 700;
+}
+
+.is-hidden-btn{
+  max-height: 0  !important;
+  margin: 0  !important;
+  padding-top: 0  !important;
+  padding-bottom: 0  !important;
+  overflow: hidden  !important;
+}
+
+.is-none{
+  display: none;
+}
+
+.is-block{
+  display: block;
+}
+
+
+.is-show-btn {
+  
+  opacity: 1;
+  max-height: 100px;
+  /* یه مقدار بیشتر از ارتفاع واقعی ارور */
+  margin: 10px 0;
+  /* مارجین دلخواهت موقع نمایش */
+  padding: 12px;
+  /* پدینگ دلخواه باکست */
+  transition: all 0.67s ;
+}
+
+/* 3. Layout */
+.app {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.app-header {
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.app-header p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* 4. Form */
+.form-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper svg {
+  position: absolute;
+  top: 50%;
+  right: 0.9rem;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 2.6rem 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--text);
+  background-color: #fbfdff;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.input-wrapper input::placeholder {
+  color: #9aa7b2;
+}
+
+.input-wrapper input:hover {
+  border-color: #b6c2ce;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(14, 90, 109, 0.12);
+  background-color: #ffffff;
+}
+
+.input-wrapper input:disabled {
+  background-color: #f1f4f7;
+  color: #8a97a3;
+  cursor: not-allowed;
+  border-color: var(--border);
+}
+
+.input-wrapper input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-wrapper input[type="number"]::-webkit-outer-spin-button,
+.input-wrapper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--transition), box-shadow var(--transition), transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  box-shadow: 0 4px 8px rgba(14, 90, 109, 0.18);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(14, 90, 109, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  background-color: #b7c5cf;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: -0.75rem;
+}
+
+/* 5. Error state */
+.error-section {
+  margin-top: 0.5rem;
+
+}
+
+.form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-right: 4px solid var(--error);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  color: var(--error);
+}
+
+.form-error svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.1rem;
+}
+
+.form-error-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.form-error p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+
+/* 6. Profile card */
+.result-section {
+  margin-top: 0.5rem;
+}
+
+.profile-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(to left, #f8fbfd, #eef5f8);
+  border-bottom: 1px solid var(--border);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-summary h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #fafcfd;
+  border: 1px solid #edf1f4;
+  border-radius: var(--radius);
+}
+
+.detail-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.detail-label {
+  min-width: 110px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.detail-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.age-status {
+  background-color: #fff3e0;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+/* 7. Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem 0.75rem;
+  }
+
+  .app {
+    gap: 1.25rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-section {
+    padding: 1.25rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field--full {
+    grid-column: auto;
+  }
+
+  .btn-primary {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .profile-card-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-details {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .detail-row {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
+
+  .detail-label {
+    min-width: 80px;
+  }
+}
+
+.hide-card {
+  display: none ;
+}
+
+.show_card {
+  display: block !important;
+}
+
+.watermark {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1000;
+  background-color: rgba(14, 90, 109, 0.08);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(14, 90, 109, 0.15);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  color: var(--muted, #5c6b76);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: auto;
+}
+
+.watermark:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.watermark-text {
+  margin-left: 4px;
+}
+
+.watermark-brand {
+  font-weight: 700;
+  color: var(--primary-dark, #084452);
+}
+
+.watermark-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.watermark-link strong {
+  color: var(--primary-dark, #084452);
+}
+
+/* روی موبایل کوچیک‌ترش کن */
+@media (max-width: 480px) {
+  .watermark {
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.68rem;
+    padding: 5px 10px;
+  }
+}
+
+/* واتر مارک  *//* === Watermark دکمه‌ای === *//* === دکمه‌ی واترمارک === */
+.watermark {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px 8px 18px;
+  background: #f6f9fb;
+  border: 1px solid #cfdae2;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: #5c6b76;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+
+  /* سایه‌ی سه‌بعدی واقعی */
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(14, 90, 109, 0.08),
+    0 4px 10px rgba(14, 90, 109, 0.1);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.watermark:hover,
+.watermark:focus-within {
+  transform: translateY(-2px);
+  border-color: #0e5a6d;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05),
+    0 2px 4px rgba(14, 90, 109, 0.12),
+    0 8px 20px rgba(14, 90, 109, 0.18);
+}
+
+.watermark-text {
+  font-size: 0.72rem;
+}
+
+.watermark-brand {
+  font-weight: 800;
+  color: #084452;
+  font-size: 0.8rem;
+}
+
+/* === دایره‌ی قرمز اعلان === */
+.watermark-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e74c3c;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(231, 76, 60, 0.5);
+  animation: wm-badge-pulse 1.8s ease-out infinite;
+}
+
+@keyframes wm-badge-pulse {
+  0% {
+    box-shadow: 0 1px 3px rgba(231, 76, 60, 0.5),
+                0 0 0 0 rgba(231, 76, 60, 0.6);
+  }
+  70% {
+    box-shadow: 0 1px 3px rgba(231, 76, 60, 0.5),
+                0 0 0 10px rgba(231, 76, 60, 0);
+  }
+  100% {
+    box-shadow: 0 1px 3px rgba(231, 76, 60, 0.5),
+                0 0 0 0 rgba(231, 76, 60, 0);
+  }
+}
+
+/* وقتی هاور شد، پالس متوقف شه */
+.watermark:hover .watermark-badge,
+.watermark:focus-within .watermark-badge {
+  animation: none;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+/* === باکس پیام (Popup) === */
+.watermark-popup {
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: 0;
+  width: 350px;
+  background: #ffffff;
+  border: 1px solid #dbe4ea;
+  border-radius: 14px;
+  text-align: right;
+  direction: rtl;
+  overflow: visible;
+
+  /* سایه‌ی چندلایه که حس واقعی می‌ده */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 1px 2px rgba(14, 90, 109, 0.06),
+    0 8px 20px rgba(14, 90, 109, 0.12),
+    0 20px 40px rgba(14, 90, 109, 0.1);
+
+  /* حالت اولیه: مخفی */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.97);
+  transform-origin: bottom left;
+  pointer-events: none;
+
+  /* بسته شدن با تاخیر، که کاربر بتونه موس رو ببره */
+  transition:
+    opacity 0.28s ease 0.35s,
+    transform 0.28s ease 0.35s,
+    visibility 0s linear 0.63s;
+}
+
+/* دنباله‌ی پیام (شکل حباب چت) */
+.watermark-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 26px;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-right: 1px solid #dbe4ea;
+  border-bottom: 1px solid #dbe4ea;
+  transform: translateY(-50%) rotate(45deg);
+  border-radius: 0 0 3px 0;
+}
+
+/* ناحیه‌ی نامرئی بین واترمارک و مودال (که هاور قطع نشه) */
+.watermark-popup::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+/* حالت نمایش */
+.watermark:hover .watermark-popup,
+.watermark:focus-within .watermark-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+
+  transition:
+    opacity 0.32s cubic-bezier(0.34, 1.4, 0.5, 1) 0s,
+    transform 0.34s cubic-bezier(0.34, 1.4, 0.5, 1) 0s,
+    visibility 0s linear 0s;
+}
+
+/* === هدر باکس === */
+.wm-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #0e5a6d;
+  border-radius: 13px 13px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* هایلایت براق بالای هدر (واقعی، نه فیک) */
+.wm-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* یک براقی کوچک که با تاخیر رد می‌شه */
+.wm-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+  animation: wm-shine 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wm-shine {
+  0%   { left: -100%; }
+  40%  { left: 130%; }
+  100% { left: 130%; }
+}
+
+.wm-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f5c66b, #e9a23b);
+  color: #084452;
+  font-size: 1.3rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+
+  /* سایه‌ی داخلی و بیرونی برای حس سه‌بعدی */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.12),
+    0 3px 8px rgba(233, 162, 59, 0.4);
+}
+
+.wm-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.wm-title {
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+.wm-subtitle {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  font-weight: 400;
+}
+
+.wm-subtitle strong {
+  color: #f5c66b;
+  font-weight: 700;
+}
+
+/* === متن توضیحات === */
+.wm-desc {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: #1e2a32;
+  padding: 15px 16px;
+  margin: 0;
+  background: #fafcfd;
+  border-bottom: 1px solid #eef3f6;
+  font-family: vazir;
+  font-size: 16px;
+}
+
+.wm-desc strong {
+  color: #0e5a6d;
+  font-weight: 800;
+}
+
+/* === لینک‌ها === */
+.wm-socials {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 4px;
+  background: #ffffff;
+  border-radius: 0 0 13px 13px;
+}
+
+.wm-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f8fbfd;
+  border: 1px solid #ebf1f5;
+  color: #1e2a32;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.wm-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #ffffff;
+  border: 1px solid #e3ecf2;
+  color: #0e5a6d;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(14, 90, 109, 0.06);
+  transition: all 0.2s ease;
+}
+
+.wm-link-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.wm-link-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1e2a32;
+  transition: color 0.2s ease;
+}
+
+.wm-link-text {
+  font-size: 0.7rem;
+  direction: ltr;
+  text-align: left;
+  color: #7a8894;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.wm-link-arrow {
+  font-size: 0.75rem;
+  color: #b6c2ce;
+  transform: translateX(3px);
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+/* هاور روی لینک - سه‌بعدی و واقعی */
+.wm-link:hover {
+  background: #0e5a6d;
+  border-color: #084452;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 10px rgba(14, 90, 109, 0.22);
+}
+
+.wm-link:hover .wm-link-icon {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.wm-link:hover .wm-link-label,
+.wm-link:hover .wm-link-text {
+  color: #ffffff;
+}
+
+.wm-link:hover .wm-link-arrow {
+  color: #f5c66b;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* === موبایل === */
+@media (max-width: 560px) {
+  .watermark {
+    bottom: 14px;
+    left: 14px;
+    padding: 7px 13px 7px 15px;
+  }
+
+  .watermark-popup {
+    width: calc(100vw - 28px);
+    max-width: 340px;
+  }
+
+  .watermark-popup::after {
+    left: 22px;
+  }
+}
